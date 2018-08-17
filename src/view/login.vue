@@ -39,8 +39,9 @@
         this.$refs[name].validate((valid) => {
           if (valid) {
             this.$Message.success('提交成功!');
-            this.$router.push('host-list')
             sessionStorage["userName"]= this.formInline.user
+            sessionStorage["token"]= "abcdefghijklmn"
+            this.$router.push('manage')
           } else {
             this.$Message.error('表单验证失败!');
       }

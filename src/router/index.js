@@ -9,23 +9,22 @@ import Manage from '@/view/manage'
 Vue.use(Router)
 Vue.use(VueResource)
 
-export default new Router({
+const routing= new Router({
   routes: [
     {
-      path: '/',
+      path: '/login',
+      name: 'login',
       component: Login
     },
     {
-      path: 'login',
-      redirectTo:'/'
-    },
-    {
       path: '/manage',
+      name: 'manage',
       component: Manage,
       children:[
         {
           path: '/host-list',
           component: HostList,
+          name: 'host-list',
           meta: [{
             name:'云主机列表'
           }]
@@ -47,4 +46,25 @@ export default new Router({
 
   ]
 })
+
+//路由守卫
+routing.beforeEach((to,from,next)=>{
+  const token= sessionStorage["token"]
+  if(!token && to.name != 'login'){
+    next({
+      name: 'login'
+    })
+  }else if(!token && to.name == 'login'){
+    next() //跳转
+  }else if(token && to.name == 'login'){
+    next({
+      name: 'manage'
+    })
+  }else{
+    next()
+  }
+
+})
+
+export default routing
 
