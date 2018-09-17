@@ -6,9 +6,11 @@ import App from './App'
 import router from './router'
 import iView from 'iview';
 import 'iview/dist/styles/iview.css';    // 使用 CSS
+import echarts from 'echarts'
 
 Vue.use(VueRouter);
 Vue.use(iView);
+Vue.prototype.$echarts= echarts;
 
 Vue.config.productionTip = false
 

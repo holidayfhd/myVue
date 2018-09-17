@@ -5,9 +5,9 @@
 </template>
 
 <script>
-export default {
+  export default {
 
-}
+  }
 </script>
 <style>
   @import './assets/style/style.less';

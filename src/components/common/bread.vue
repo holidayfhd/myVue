@@ -1,7 +1,7 @@
 <template>
   <div class="bread">
     <Breadcrumb separator=">">
-      <Breadcrumb-item to="/">首页</Breadcrumb-item>
+      <Breadcrumb-item to="/manage">首页</Breadcrumb-item>
       <Breadcrumb-item  v-for="(item,index) in $route.meta" :key="index" :to="item.path">{{item.name}}</Breadcrumb-item>
     </Breadcrumb>
   </div>

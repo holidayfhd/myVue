@@ -1,11 +1,11 @@
 <template>
   <div class="menu">
-    <Menu mode="horizontal" :theme="theme1" active-name="1" @on-select="goto">
-      <MenuItem name="">
+    <Menu mode="horizontal" :theme="theme1" :active-name="activeName" @on-select="goto">
+      <MenuItem name="manage">
         <Icon type="ios-paper" />
          首页
       </MenuItem>
-      <Submenu name="host">
+      <Submenu name="[host-list,host-create]">
         <template slot="title">
           <Icon type="ios-stats" />
           云主机管理
@@ -16,6 +16,10 @@
       <MenuItem name="examine">
         <Icon type="ios-construct" />
         审批中心
+      </MenuItem>
+      <MenuItem name="echarts">
+        <Icon type="ios-construct" />
+        图表
       </MenuItem>
       <MenuItem name="user">
         <Icon type="ios-people" />
@@ -61,13 +65,21 @@
     },
     methods:{
       goto(name) {
-        this.$router.push(name)
+        this.$router.push({name:name})
       },
       signOut(){
-        this.$router.push('/');
         window.sessionStorage.clear();
+        this.$router.push('/login');
       }
-    }
+    },
+    computed:{
+      activeName(){
+        console.log(this.$router)
+        console.log(this.$route)
+        return this.$route.name;
+
+      }
+    },
   }
 </script>
 <style>

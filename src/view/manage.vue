@@ -1,9 +1,10 @@
 <template>
   <div id="app">
     <v-menu></v-menu>
-    <keep-alive>
+   <!-- <keep-alive>
       <router-view></router-view>
-    </keep-alive>
+    </keep-alive>-->
+    <router-view></router-view>
   </div>
 </template>
 
